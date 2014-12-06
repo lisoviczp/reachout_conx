@@ -1,1 +1,12 @@
-<h1> Welcome to DwellingReach </h1>
+<h1> Welcome to Reach Out </h1>
+
+<p class="options"> 
+<% if tenant_signed_in? %> 
+	<%= link_to 'Subscribe to an apartment', root_path %> 
+<% elsif landlord_signed_in? %> 
+	<%= link_to 'Register a tenant', root_path %> &nbsp | &nbsp
+	<%= link_to 'Register an apartment', root_path %> &nbsp | &nbsp
+	<%= link_to 'Register a building', root_path %> 
+<% end %>
+
+</p>

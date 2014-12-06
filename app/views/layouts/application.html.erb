@@ -8,17 +8,20 @@
 </head>
 <body>
 
-<div class="navbar-text navbar-right">
+<div class="">
 
 	<% if tenant_signed_in? %> 
-		<%= current_tenant.email %> &nbsp | &nbsp
+		<%= link_to 'Home', root_path %> &nbsp | &nbsp
 		<%= link_to 'Edit Account', edit_tenant_path(current_tenant) %>  &nbsp | &nbsp
-		<%= link_to 'Sign Out', destroy_tenant_session_path, method: :delete,  :confirm => 'Are you sure?'  %>
+		<%= link_to 'Sign Out', destroy_tenant_session_path, method: :delete,  :confirm => 'Are you sure?'  %> &nbsp | &nbsp
+		<%= current_tenant.email %> 
 	<% elsif landlord_signed_in? %>
-	    <%= current_landlord.email %> &nbsp | &nbsp
+		<%= link_to 'Home', root_path %> &nbsp | &nbsp
 		<%= link_to 'Edit Account', edit_landlord_path(current_landlord) %>  &nbsp | &nbsp
-		<%= link_to 'Sign Out', destroy_landlord_session_path, method: :delete,  :confirm => 'Are you sure?'  %>
+		<%= link_to 'Sign Out', destroy_landlord_session_path, method: :delete,  :confirm => 'Are you sure?'  %> &nbsp | &nbsp
+	    <%= current_landlord.email %> 
 	<% else %>
+		<%= link_to 'Home', root_path %> &nbsp | &nbsp
 	    <%= link_to 'Sign In as Landlord', new_landlord_session_path %>	&nbsp | &nbsp
 	    <%= link_to 'Sign In as Tenant', new_tenant_session_path %>
     <% end %>

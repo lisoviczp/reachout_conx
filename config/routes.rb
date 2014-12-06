@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   root to: "home#index"
-  resources :landlords
-  resources :tenants
+
   resources :buildings
   resources :apartments
   resources :notices
 
   devise_for :tenants
   devise_for :landlords
+
+  resources :landlords
+  resources :tenants
+
+  get 'tenants/:id/find' => 'tenants#find'
   
   # get 'home/index'
 

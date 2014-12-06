@@ -1,31 +1,32 @@
-<h2> Create a Building </h2>
 
 <div class = "my-form-container">
+  <% if landlord_signed_in? %> 
+      <%= simple_form_for @building do |f| %>
+        <h2> Create a Building </h2>
+        <p>         
+          <div class="new-form"> 
+            <%= f.input :address, label_method: :address %>
+          </div> <br> <br>
 
-<%= simple_form_for @building do |f| %>
-  <div class="new-form"> 
-    <%= f.input :address, label_method: :address %>
-  </div> <br> <br>
+          <div class="new-form"> 
+            <%= f.input :city, label_method: :city %>
+          </div> <br> <br>
 
-  <div class="new-form"> 
-    <%= f.input :city, label_method: :city %>
-  </div> <br> <br>
+          <div class="new-form"> 
+            <%= f.input :state, label_method: :state %>
+          </div> <br> <br>
 
-  <div class="new-form"> 
-    <%= f.input :state, label_method: :state %>
-  </div> <br> <br>
+          <div class="new-form"> 
+            <%= f.input :zipcode, label_method: :zipcode %>
+          </div> <br> <br>
 
-  <div class="new-form"> 
-    <%= f.input :zipcode, label_method: :zipcode %>
-  </div> <br> <br>
-
-  <div class="new-form"> 
-    <%= f.input :number_of_apartments, label_method: :number_of_apartments %>
-  </div> <br> <br>
-
-
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
-
-
+          <div class="new-form"> 
+            <%= f.input :number_of_apartments, label_method: :number_of_apartments %>
+          </div> <br> <br>
+          <%= f.submit class: 'btn btn-primary' %>
+        </p>
+      <% end %>
+  <% else %>
+    <p> You must be a Landlord to register a building. </p>
+  <% end %>
 </div>

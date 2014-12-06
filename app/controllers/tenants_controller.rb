@@ -28,6 +28,11 @@ class TenantsController < ApplicationController
   end
 
 
+  def find
+    
+  end
+
+
 private
 
   def tenant_params
