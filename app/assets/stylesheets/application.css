@@ -14,7 +14,7 @@
  *= require_self
  */
 
- body {
+body {
  	background-color: rgb(225, 225, 225);
  }
 
@@ -22,6 +22,13 @@ h1 {
 	font-family: helvetica;
 	text-align: center;
 	font-size: 25px;
+	font-weight: 100;
+	color: #556B2F;
+}
+
+h3 {
+	text-align: center;
+	font-family: helvetica;
 	font-weight: 100;
 	color: #556B2F;
 }
@@ -62,11 +69,23 @@ p {
 	color: #556B2F;	
 }
 
-.stats {
+.apartment-name {
+	font-weight: 700;
+}
+
+.stats-container #stats {
+	display: inline;
+	font-family: helvetica;
+	font-weight: 100;
+	color: #556B2F;	
+	text-align: center;
+}
+
+#stats {
 	display: inline;
 	font-family: helvetica;
 	font-size: 60px;
 	font-weight: 100;
 	color: #556B2F;	
-
+	text-align: center;
 }

@@ -40,7 +40,7 @@ private
 
   def building_params
     params.require(:building).permit(:address, :city, :state, :zipcode, :number_of_apartments, 
-    	:building_code, apartment_ids: [], tenant_ids: [])
+    	:building_code, :landlord_id, apartment_ids: [], tenant_ids: [])
   end
 
   # post_ids: [], picture_ids: [])

@@ -4,8 +4,12 @@
     <%= f.input :last_name, required: true, autofocus: true %>
     <%= f.input :phone_number, required: true, autofocus: true %>
 	<%= f.input :email, label_method: :email %> <br>
-
   <%= f.submit class: 'btn btn-primary' %>
   
 <% end %>
 
+<p> If you want to subscribe to a new apartment, you should delete this one and subscribe to a new one </p> 
+
+<p class="apartment-name"> 
+	<%= @tenant.apartment.apartment_name if @tenant.apartment %>
+</p>
