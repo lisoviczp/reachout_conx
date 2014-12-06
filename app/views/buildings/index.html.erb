@@ -1,0 +1,13 @@
+
+<h1>Listing all registered Buildings </h1>
+
+
+<p>
+
+<% @building.each do |building| %>
+	<%= building.building_name if building %>
+	<hr>
+<% end %>
+
+
+</p>

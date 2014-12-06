@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  apartment_number: MyString
+  number_of_tenants: 1
+  apartment_code: MyString
+
+two:
+  apartment_number: MyString
+  number_of_tenants: 1
+  apartment_code: MyString

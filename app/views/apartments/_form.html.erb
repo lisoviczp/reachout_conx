@@ -1,0 +1,24 @@
+<h2> Create an Apartment </h2>
+
+<div class = "my-form-container">
+
+<%= simple_form_for @apartment do |f| %>
+
+  <div class="new-form"> 
+    <%= f.association :building, label_method: :building_name, prompt: "Select Building" %>
+  </div> <br> <br>
+
+  <div class="new-form"> 
+    <%= f.input :apartment_number, label_method: :apartment_number %>
+  </div> <br> <br>
+
+  <div class="new-form"> 
+    <%= f.input :number_of_tenants, label_method: :number_of_tenants %>
+  </div> <br> <br>
+
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+
+</div>

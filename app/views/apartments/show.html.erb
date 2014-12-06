@@ -1,0 +1,10 @@
+<h1>Listing This Apartment</h1>
+
+<p>
+<% if @apartment.building %>
+	<%= @apartment.apartment_name %>
+<% else %>
+	This apartment doesn't belong to a building
+<% end %>
+
+</p>

@@ -1,0 +1,14 @@
+
+<h1>Listing all Apartments</h1>
+
+
+<p>
+
+<% @apartment.each do |apartment| %>
+	<%= apartment.apartment_name if apartment.building %>
+	<hr>
+<% end %>
+
+
+</p>
+
