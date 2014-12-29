@@ -77,7 +77,8 @@ p {
 }
 
 .apartment-name {
-	font-weight: 700;
+	/*font-weight: 700;*/
+	text-align: center;
 }
 
 .stats-container #stats {
@@ -130,7 +131,7 @@ p {
 	border: solid 1px black;
 	background-color: white;
 	font-family: helvetica;
-	padding: 5px;
+	padding: 15px;
 	margin-left: 1%;
 	width: 40%;
 	font-weight: 100;
@@ -143,7 +144,7 @@ p {
 	background-color: white;
 	font-family: helvetica;
 	/*text-align: center;*/
-	padding: 5px;
+	padding: 15px;
 	margin-left: 3%;
 	font-weight: 100;
 	float: right;
@@ -154,4 +155,14 @@ p {
 
 .tenant-info {
 	margin-left: 50px;
+}
+
+.apartment-about {
+	border: solid 1px black;
+	background-color: white;
+	font-family: helvetica;
+	/*text-align: center;*/
+	padding: 5px;
+	margin: 5%;
+	font-weight: 100;
 }

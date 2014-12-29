@@ -1,8 +1,24 @@
 <h1>Listing all registered Buildings </h1>
 
-<% @building.each do |building| %>
-	<% if building.landlord_id == current_landlord.id %>
-		<p> <%= link_to building.building_name, building_path(building) if building %> </p>
-	<hr>
-	<% end %>	
+<% if landlord_signed_in? %>
+	<div class="apartment-about">
+	<% @building.each do |building| %>
+		<% if building.landlord_id == current_landlord.id %>
+			<p> <%= link_to building.building_name, building_path(building) if building %> </p>
+		<hr>
+		<% end %>	
+	<% end %>
+	</div>
+<% else %>
+	<div class="apartment-about">
+	<% @building.each do |building| %>
+		<% if building != @building.last %>
+			<p> <%= building.building_name if building %> </p>
+			<hr>
+		<% else %>
+			<p> <%= building.building_name if building %> </p>	
+		<% end %>
+	<% end %>
+	</div>
 <% end %>
+

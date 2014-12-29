@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :tenants
 
   get 'tenants/:id/find' => 'tenants#find', as: 'tenants_find'
+  get 'buildings/:id/about' => 'buildings#about', as: 'buildings_about'
   
   # get 'home/index'
 
