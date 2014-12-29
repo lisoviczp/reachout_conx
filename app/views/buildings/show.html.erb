@@ -1,7 +1,48 @@
-<h1>Listing this Building</h1>
+<h1>Showing this Building</h1>
 <p>
 
-
 <%= @building.building_name %>
-
+<div class="button">
+<%= link_to 'Edit Building', edit_building_path(@building) %>
+</div>
+<%= @building.number_of_apartments %> apartments(s)
 </p>
+
+<div class="all-apartments-container">
+	<div class="apartment-tenants">
+		<h2> Tenant Information </h2>
+		<% Apartment.all.each do |apartment | %>
+			<% if apartment.in_building? (@building) %>
+				<%= apartment.apartment_name %> </br>
+				<%= apartment.number_of_tenants %> tenants </br> </br>
+
+				<div class="tenant-info">
+				<% Tenant.all.each do |tenant| %>
+					<% if tenant.apartment_id == apartment.id %>
+						Name: <%= tenant.full_name	%> </br>
+						Phone: <%= tenant.phone_number %> </br>
+						Email: <%= tenant.email %> </br> </br>
+					<% end %>
+				<% end %></div>	
+
+			<% end %>
+		<% end %>
+	</div>
+
+	<div class="apartment-notices">
+		<h2> Notice Board </h2>
+		<% Notice.all.each do |notice| %>
+			<% if notice.apartment.in_building? (@building) %>
+				From: <%= notice.tenant.full_name if notice.tenant %>
+				<%= notice.landlord.full_name if notice.landlord %>  </br>				
+				Type: <%= notice.notice_type %> </br>
+				Subject: <%= notice.title %> </br>
+				<%= notice.body %> </br>	
+				<hr>
+			<% end %>
+		<% end %>
+	</div>
+
+
+
+</div>

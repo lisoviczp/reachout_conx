@@ -1,2 +1,10 @@
 <h1>Notices#show</h1>
-<p>Find me in app/views/notices/show.html.erb</p>
+
+<p>
+<%= @notice.notice_type %> </br>
+<%= @notice.title %> </br>
+<%= @notice.body %> </br>
+TenantId: <%= @notice.tenant_id %> </br>
+ApartmentId: <%= @notice.apartment_id %>
+
+</p>

@@ -41,7 +41,7 @@ private
 
   def apartment_params
     params.require(:apartment).permit(:apartment_number, :number_of_tenants, :apartment_code, 
-    	:building_id, :landlord_id, tenant_ids: [])
+    	:building_id, :landlord_id, tenant_ids: [], notice_ids: [])
   end
 
   # post_ids: [], picture_ids: [])

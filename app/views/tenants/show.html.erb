@@ -3,10 +3,6 @@
 <% if tenant_signed_in? %>
 	<% if @tenant == current_tenant %>
 		<p> this tenant is signed in and is the current user </p>
-		<p class="list-info"> 
-			<%= @tenant.apartment.apartment_name if @tenant.apartment %>
-		</p>
-
 	<% else %>
 		<p> You do not have access to view this tenant's history <p>
 	<% end %>
@@ -14,3 +10,20 @@
 <% end %>
 	
 
+<div class="apartment-container">
+	<div class="apartment">
+	<% Apartment.all.each do |apartment | %>
+		<% if apartment.id == @tenant.apartment.id %>
+			<%= @tenant.apartment.apartment_name %> </br>
+			<%= @tenant.apartment.number_of_tenants %> tenants </br> </br>
+			<% Tenant.all.each do |tenant| %>
+				<% if tenant.apartment.id == apartment.id %>
+					Name: <%= tenant.full_name	%> </br>
+					Phone: <%= tenant.phone_number %> </br>
+					Email: <%= tenant.email %> </br> </br>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+	</div>
+</div>

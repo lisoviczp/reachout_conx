@@ -1,0 +1,15 @@
+<%= simple_form_for @notice do |f| %>
+  <div class=""> 
+    <%= f.input :notice_type, collection: ['Rent','Utilities','Plumbing', 'Event', 'Cable/Internet','Damage'] %>
+  </div>
+
+  <div class=""> 
+    <%= f.input :title %>
+  </div> <br>
+
+  <div class=""> 
+    <%= f.input :body %>
+  </div> <br> 
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

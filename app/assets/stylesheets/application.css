@@ -26,6 +26,13 @@ h1 {
 	color: #556B2F;
 }
 
+h2 {
+	font-family: helvetica;
+	text-align: center;
+	font-weight: 100;
+	color: #556B2F;
+}
+
 h3 {
 	text-align: center;
 	font-family: helvetica;
@@ -35,7 +42,7 @@ h3 {
 
 a {
 	font-family: helvetica;
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: 100;
 	color: #556B2F;	
 }
@@ -88,4 +95,63 @@ p {
 	font-weight: 100;
 	color: #556B2F;	
 	text-align: center;
+}
+
+.building-list-container {
+	border: 1px solid black;
+	margin: 5%;
+	padding: 10px;
+	font-family: helvetica;
+	font-size: 18px;
+	font-weight: 100;
+	color: #556B2F;	
+}
+
+.button {
+	border: 2px solid;
+	padding: 5px;
+	background-color: gray;
+	border-radius: 5px;
+	width: 150px;
+	/*display: inline;*/
+}
+
+.all-apartments-container {
+	border: solid 1px black;
+	padding: 3%;
+}
+
+.apartment {
+	border: solid 1px black;
+	padding: 3%;
+}
+
+.apartment-tenants {
+	border: solid 1px black;
+	background-color: white;
+	font-family: helvetica;
+	padding: 5px;
+	margin-left: 1%;
+	width: 40%;
+	font-weight: 100;
+	float: left;
+	display: block;
+}
+
+.apartment-notices {
+	border: solid 1px black;
+	background-color: white;
+	font-family: helvetica;
+	/*text-align: center;*/
+	padding: 5px;
+	margin-left: 3%;
+	font-weight: 100;
+	float: right;
+	display: block;
+	width: 50%;
+
+}
+
+.tenant-info {
+	margin-left: 50px;
 }

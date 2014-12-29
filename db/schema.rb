@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206182931) do
+ActiveRecord::Schema.define(version: 20141229023401) do
 
   create_table "apartments", force: true do |t|
     t.string   "apartment_number"
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(version: 20141206182931) do
     t.boolean  "received"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "notice_type"
+    t.integer  "apartment_id"
+    t.integer  "tenant_id"
+    t.integer  "landlord_id"
   end
 
   create_table "tenants", force: true do |t|

@@ -5,6 +5,7 @@ class BuildingsController < ApplicationController
 
   def show
   	@building = Building.find(params[:id])
+    @building.number_of_apartments = Apartment.where(building_id: @building.id).count
   end
 
   def edit
@@ -23,6 +24,7 @@ class BuildingsController < ApplicationController
 
   def create
     @building = Building.new(building_params)
+    @building.landlord = current_landlord
  
     if @building.update(building_params)
       redirect_to @building

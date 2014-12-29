@@ -1,5 +1,6 @@
 class LandlordsController < ApplicationController
   before_action :authenticate_landlord!
+  
 
   def index
     @landlord = Landlord.all
@@ -27,12 +28,11 @@ class LandlordsController < ApplicationController
     @landlord = Landlord.new
   end
 
-
 private
 
   def landlord_params
     params.require(:landlord).permit(:first_name, :last_name, :email, :phone_number,
-      building_ids: [], apartment_ids: [], tenant_ids: [])
+      building_ids: [], apartment_ids: [], tenant_ids: [], notice_ids: [])
   end
 
   # post_ids: [], picture_ids: [])
