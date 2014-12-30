@@ -1,21 +1,11 @@
 
 <h1> Welcome to Reach Out </h1>
 
-<h3 class="stats-container">
-
-	<div id="stats"><%= Tenant.count %></div> subscribed tenants in 
-	<div id="stats"><%= Apartment.count %></div> apartments in 
-	<div id="stats"><%= Building.count %></div> buildings with 
-	<div id="stats"><%= Landlord.count %></div> landlords.
-
-</h3>
-
-
 <p class="options"> 
 <% if tenant_signed_in? %> 
-	<%= link_to 'Subscribe to existing apartment', tenants_find_path(current_tenant) %> &nbsp | &nbsp
-	<%= link_to 'Register an apartment', new_apartment_path %> &nbsp | &nbsp
-	<%= link_to 'Post a Notice', new_notice_path %> 
+	<img src="/assets/png/glyphicons-125-message-plus.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Subscribe to existing apartment', tenants_find_path(current_tenant) %> &nbsp | &nbsp
+	<img src="/assets/png/glyphicons-364-cloud-download.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Register an apartment', new_apartment_path %> &nbsp | &nbsp
+	<img src="/assets/png/glyphicons-151-edit.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Post a Notice', new_notice_path %> 
 
 	<p class="apartment-name"> 
 		<%= current_tenant.apartment.apartment_name if current_tenant.apartment %> </br>
@@ -49,7 +39,7 @@
 						<%= notice.landlord.full_name if notice.landlord %>  </br>				
 						Type: <%= notice.notice_type %> </br>
 						Subject: <%= notice.title %> </br>
-						<%= notice.body %> </br>	
+						<%= simple_format(notice.body)%> </br>	
 						<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
 						<hr>
 					<% end %>
@@ -59,7 +49,7 @@
 						<%= notice.landlord.full_name if notice.landlord %>  </br>				
 						Type: <%= notice.notice_type %> </br>
 						Subject: <%= notice.title %> </br>
-						<%= notice.body %> </br>	
+						<%= simple_format(notice.body) %> </br>	
 						<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
 					<% end %>
 				<% end %>
@@ -84,6 +74,14 @@
 			<% end %>
 		<% end %>
 	</div>
+<% else %>
+
+<h3 class="stats-container">
+	<div id="stats"><%= Tenant.count %></div> subscribed tenants in 
+	<div id="stats"><%= Apartment.count %></div> apartments in 
+	<div id="stats"><%= Building.count %></div> buildings with 
+	<div id="stats"><%= Landlord.count %></div> landlords.
+</h3>
 <% end %>
 
 </p>

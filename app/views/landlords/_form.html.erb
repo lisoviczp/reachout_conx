@@ -1,3 +1,12 @@
+<div class="notice-label">
+  First Name: </br> </br>
+  Last Name:: </br> </br>
+  Phone Number: </br></br>
+  Email: </br></br>
+</div>
+
+
+<div class="notice-form">
 <%= simple_form_for @landlord do |f| %>
 
     <%= f.input :first_name, required: true, autofocus: true %>
@@ -6,6 +15,6 @@
 	<%= f.input :email, label_method: :email %> <br>
 
   <%= f.submit class: 'btn btn-primary' %>
-  
 <% end %>
+</div>
 

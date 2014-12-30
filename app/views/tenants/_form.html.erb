@@ -1,15 +1,19 @@
+<div class="user-label">
+  First Name: </br> </br>
+  Last Name: </br> </br>
+  Phone Number: </br></br>
+  Email: </br></br>
+</div>
+
+
+<div class="user-form">
 <%= simple_form_for @tenant do |f| %>
-
-    <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true, autofocus: true %>
-    <%= f.input :phone_number, required: true, autofocus: true %>
-	<%= f.input :email, label_method: :email %> <br>
-  <%= f.submit class: 'btn btn-primary' %>
-  
+    <%= f.input :first_name, required: true, autofocus: true, label: false %></br>
+    <%= f.input :last_name, required: true, autofocus: true, label: false %></br>
+    <%= f.input :phone_number, required: true, autofocus: true, label: false %></br>
+	<%= f.input :email, label_method: :email, label: false %></br>
+  <%= f.submit class: 'btn btn-primary' %>  
 <% end %>
+</div>
 
-<p> If you want to subscribe to a new apartment, you should delete this one and subscribe to a new one </p> 
 
-<p class="apartment-name"> 
-	<%= @tenant.apartment.apartment_name if @tenant.apartment %>
-</p>

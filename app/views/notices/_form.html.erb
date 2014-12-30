@@ -1,15 +1,26 @@
-<%= simple_form_for @notice do |f| %>
-  <div class=""> 
-    <%= f.input :notice_type, collection: ['Rent','Utilities','Plumbing', 'Event', 'Cable/Internet','Damage'] %>
-  </div>
+<h1> New Notice </h1>
 
-  <div class=""> 
-    <%= f.input :title %>
-  </div> <br>
+<div class="notice-label">
+  Notice Type: </br> </br>
+  Subject: </br> </br>
+  Message: </br>
+</div>
 
-  <div class=""> 
-    <%= f.input :body %>
-  </div> <br> 
 
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+<div class="notice-form">
+  <%= simple_form_for @notice do |f| %>
+    <div class=""> 
+      <%= f.input :notice_type, collection: ['Rent','Utilities','Plumbing', 'Event', 'Cable/Internet','Damage'], label: false %>
+    </div>
+  </br>
+    <div class=""> 
+      <%= f.input :title,  input_html: {rows: 15, cols: 100}, label: false %>
+    </div> </br>
+
+    <div class=""> 
+      <%= f.input :body, input_html: {rows: 15, cols: 100 }, label: false %>
+    </div>  </br>
+
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
