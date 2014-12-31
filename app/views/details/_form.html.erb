@@ -1,0 +1,15 @@
+<h1> Building Details </h1>
+
+<div class="notice-label">
+  Details: </br> </br>
+</div>
+
+<div class="notice-form">
+  <%= simple_form_for @detail do |f| %>
+    <div class=""> 
+      <%= f.input :body, input_html: {rows: 50, cols: 100 }, label: false %>
+    </div>  </br>
+
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>

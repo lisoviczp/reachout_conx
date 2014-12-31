@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :buildings
   resources :apartments
   resources :notices
+  resources :details
 
   devise_for :tenants
   devise_for :landlords
