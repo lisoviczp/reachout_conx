@@ -1,7 +1,9 @@
 <h1> Building Information </h1>
 
 <h2> <%= @building.building_name %> </h2>
-
+<p>
+<%= link_to 'Edit Building Information', buildings_about_path %>
+</p>
 
 <div class="apartment-about">
 
@@ -9,11 +11,18 @@
 Welcome to <%= @building.address %>!
 
 This is where I will post all relevant information that you'll need to know about this building and location, such as garbage/recycling days, rent/payment policies, etc.
+</p>
 
+<p>
+this is where we need to show details/params
+</p>
 
-
-
-
+<p>
+<% Detail.all.each do |detail| %>
+	<% if detail.building_id == @building.id %>
+		<%= detail.body %>
+	<% end %>
+<% end %>
 </p>
 
 

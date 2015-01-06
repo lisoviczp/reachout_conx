@@ -9,6 +9,10 @@
 	</div>
 	<%= @building.number_of_apartments %> apartments(s)
 	</p>
+	<p class="apartment-name"> 
+		<%= link_to 'Building Information', buildings_about_path %>
+		</p>
+	<p>
 
 	<div class="all-apartments-container">
 		<div class="apartment-tenants">
@@ -34,13 +38,15 @@
 		<div class="apartment-notices">
 			<h2> Notice Board </h2>
 			<% Notice.all.each do |notice| %>
-				<% if notice.apartment.in_building? (@building) %>
-					From: <%= notice.tenant.full_name if notice.tenant %>
-					<%= notice.landlord.full_name if notice.landlord %>  </br>				
-					Type: <%= notice.notice_type %> </br>
-					Subject: <%= notice.title %> </br>
-					<%= notice.body %> </br>	
-					<hr>
+				<% if notice.apartment %>
+					<% if notice.apartment.in_building? (@building) %>
+						From: <%= notice.tenant.full_name if notice.tenant %>
+						<%= notice.landlord.full_name if notice.landlord %>  </br>				
+						Type: <%= notice.notice_type %> </br>
+						Subject: <%= notice.title %> </br>
+						<%= notice.body %> </br>	
+						<hr>
+					<% end %>
 				<% end %>
 			<% end %>
 		</div>

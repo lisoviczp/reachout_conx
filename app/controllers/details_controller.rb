@@ -16,7 +16,12 @@ class DetailsController < ApplicationController
   end
 
   def create
+
     @detail = Detail.new(detail_params)
+
+    if @current_landlord
+      @detail.building = Building.where(landlord_id: current_landlord.id)
+    end 
 
     if @detail.update(detail_params)
       redirect_to @detail
@@ -52,7 +57,7 @@ class DetailsController < ApplicationController
 private
 
   def detail_params
-    params.require(:notice).permit(:building_id)
+    params.require(:detail).permit(:building_id)
   end
 
 end
