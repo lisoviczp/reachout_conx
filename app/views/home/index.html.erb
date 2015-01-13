@@ -10,8 +10,8 @@
 		<%= current_tenant.apartment.apartment_name if current_tenant.apartment %> </br>
 		<%= link_to 'Building Information', buildings_about_path(current_tenant.apartment.building) if current_tenant.apartment %>
 		</p>
+</p>	
 	<p>
-
 	<div class="all-apartments-container">
 		<div class="apartment-tenants">
 			<h2> Apartment Information </h2>
@@ -59,10 +59,9 @@
 					<% end %>
 				</div>
 			<% end %>
-
 	</p>
 
-
+<p>
 <% elsif landlord_signed_in? %> 
 	<%= link_to 'Invite a Tenant', new_tenant_path %> &nbsp | &nbsp
 	<%= link_to 'Register a building', new_building_path %> &nbsp | &nbsp
@@ -78,7 +77,7 @@
 			<% end %>
 		<% end %>
 	</div>
-
+</p>
 	<div class="apartment-notices">
 		<h2> Notice Board </h2>
 		<% Notice.all.each do |notice| %>
@@ -118,4 +117,3 @@
 
 
 </div>
-</p>

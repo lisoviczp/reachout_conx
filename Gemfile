@@ -41,3 +41,4 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'simple_form'
 gem 'pry-rails'
+gem 'prawnto_2', :require => "prawnto"

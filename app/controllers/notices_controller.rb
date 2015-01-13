@@ -1,6 +1,20 @@
 class NoticesController < ApplicationController
   def index
-    @notice = Notice.all
+    # @notice = Notice.all  
+    @current_notices = []
+    if landlord_signed_in?
+      Notice.all.each do |notice|
+        if notice.landlord == current_landlord
+          @current_notices << notice
+        end
+      end
+    elsif tenant_signed_in?
+      Notice.all.each do |notice|
+        if notice.apartment == current_tenant.apartment
+          @current_notices << notice
+        end
+      end
+    end
   end
 
   def show

@@ -118,7 +118,13 @@ p {
 }
 
 .all-apartments-container {
-	/*border: solid 1px black;*/
+	border: 1px solid black;
+	background-color: white;
+	margin-right: 3%;
+	margin-left: 3%;
+}
+
+.notice-print {
 	padding: 3%;
 }
 
