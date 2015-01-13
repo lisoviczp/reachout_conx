@@ -55,22 +55,49 @@
 				<% end %>
 			<% end %>
 		</div>
-	</div>
+
 
 	</p>
 
 
 <% elsif landlord_signed_in? %> 
-	<%= link_to 'Register a tenant', new_tenant_path %> &nbsp | &nbsp
-	<%= link_to 'Register an apartment', new_apartment_path %> &nbsp | &nbsp
-	<%= link_to 'Register a building', new_building_path %> 
+	<%= link_to 'Invite a Tenant', new_tenant_path %> &nbsp | &nbsp
+	<%= link_to 'Register a building', new_building_path %> &nbsp | &nbsp
+	<img src="/assets/png/glyphicons-364-cloud-download.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Register an apartment', new_apartment_path %> &nbsp | &nbsp
+	<img src="/assets/png/glyphicons-151-edit.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Post a Notice', new_notice_path %> 
 </br>
 	
-	<div class="building-list-container">
+	<div class="apartment-tenants">
 		<% Building.all.each do |building| %>
 			<% if building.landlord == current_landlord %>
 				<%= link_to building.building_name, building_path(building) %> <br>
 				<%= building.number_of_apartments %> apartment(s)
+			<% end %>
+		<% end %>
+	</div>
+
+	<div class="apartment-notices">
+		<h2> Notice Board </h2>
+		<% Notice.all.each do |notice| %>
+			<% if notice != Notice.last %>
+				<% if notice.landlord == current_landlord %>
+					From: <%= notice.tenant.full_name if notice.tenant %>
+					<%= notice.landlord.full_name if notice.landlord %>  </br>				
+					Type: <%= notice.notice_type %> </br>
+					Subject: <%= notice.title %> </br>
+					<%= simple_format(notice.body)%> </br>	
+					<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+					<hr>
+				<% end %>
+			<% else %>
+				<% if notice.landlord == current_landlord %>
+					From: <%= notice.tenant.full_name if notice.tenant %>
+					<%= notice.landlord.full_name if notice.landlord %>  </br>				
+					Type: <%= notice.notice_type %> </br>
+					Subject: <%= notice.title %> </br>
+					<%= simple_format(notice.body) %> </br>	
+					<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+				<% end %>
 			<% end %>
 		<% end %>
 	</div>
@@ -84,4 +111,6 @@
 </h3>
 <% end %>
 
+
+</div>
 </p>
