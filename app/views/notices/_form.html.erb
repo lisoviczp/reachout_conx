@@ -1,6 +1,7 @@
 <h1> New Notice </h1>
 
 <div class="notice-label">
+  Apartment: </br></br>
   Notice Type: </br> </br>
   Subject: </br> </br>
   Message: </br>
@@ -9,6 +10,12 @@
 
 <div class="notice-form">
   <%= simple_form_for @notice do |f| %>
+
+    <div class=""> 
+      <%= f.association :apartment, label_method: :apartment_name, label: false,
+      as: :collection_select, collection: Apartment.where(landlord: @landlord) %>
+    </div>  </br>
+
     <div class=""> 
       <%= f.input :notice_type, collection: ['Rent','Utilities','Plumbing', 'Event', 'Cable/Internet','Damage'], label: false %>
     </div>

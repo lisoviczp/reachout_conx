@@ -10,22 +10,30 @@ class NoticesController < ApplicationController
 
   def new
     @notice = Notice.new
+    @landlord = current_landlord
   end
 
   def create
     @notice = Notice.new(notice_params)
-    @tenant = current_tenant
 
     if current_tenant
+      @tenant = current_tenant
       @notice.tenant = current_tenant
       @notice.apartment_id = current_tenant.apartment_id
+      # Here's the mailer!!!
+      if @notice.save
+        # UserMailer.notice_email(@tenant, @notice).deliver
+      end
     elsif current_landlord 
       @notice.landlord = current_landlord
+      @landlord = current_landlord
+      # Here's the mailer!!!
+      if @notice.save
+        # UserMailer.notice_email(@landlord, @notice).deliver
+      end
     end
 
-    if @notice.save
-      # UserMailer.notice_email(@tenant, @notice).deliver
-    end
+
 
     if @notice.update(notice_params)
       redirect_to @notice

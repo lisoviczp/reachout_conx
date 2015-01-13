@@ -23,6 +23,10 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
+
+    if current_landlord
+      @apartment.landlord = current_landlord
+    end
  
     if @apartment.update(apartment_params)
       redirect_to @apartment

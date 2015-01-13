@@ -5,7 +5,7 @@ class BuildingsController < ApplicationController
 
   def show
   	@building = Building.find(params[:id])
-    @building.number_of_apartments = Apartment.where(building_id: @building.id).count
+    # @building.number_of_apartments = Apartment.where(building_id: @building.id).count
 
     if tenant_signed_in?
       redirect_to buildings_about_path

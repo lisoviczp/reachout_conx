@@ -1,4 +1,3 @@
-
 <h1> Welcome to Reach Out </h1>
 
 <p class="options"> 
@@ -37,7 +36,8 @@
 					<% Notice.all.each do |notice| %>
 						<% if notice != Notice.last %>
 							<% if notice.apartment == current_tenant.apartment %>
-								From: <%= notice.tenant.full_name if notice.tenant %>
+								<%= notice.apartment.apartment_name if notice.apartment %> </br>
+								From: <%= notice.tenant.full_name if notice.tenant %> 
 								<%= notice.landlord.full_name if notice.landlord %>  </br>				
 								Type: <%= notice.notice_type %> </br>
 								Subject: <%= notice.title %> </br>
@@ -47,7 +47,8 @@
 							<% end %>
 						<% else %>
 							<% if notice.apartment == current_tenant.apartment %>
-								From: <%= notice.tenant.full_name if notice.tenant %>
+								<%= notice.apartment.apartment_name if notice.apartment %> </br>
+								From: <%= notice.tenant.full_name if notice.tenant %> 
 								<%= notice.landlord.full_name if notice.landlord %>  </br>				
 								Type: <%= notice.notice_type %> </br>
 								Subject: <%= notice.title %> </br>
@@ -83,7 +84,8 @@
 		<% Notice.all.each do |notice| %>
 			<% if notice != Notice.last %>
 				<% if notice.landlord == current_landlord %>
-					From: <%= notice.tenant.full_name if notice.tenant %>
+					<%= notice.apartment.apartment_name if notice.apartment %> </br>
+					From: <%= notice.tenant.full_name if notice.tenant %> 
 					<%= notice.landlord.full_name if notice.landlord %>  </br>				
 					Type: <%= notice.notice_type %> </br>
 					Subject: <%= notice.title %> </br>
@@ -93,6 +95,7 @@
 				<% end %>
 			<% else %>
 				<% if notice.landlord == current_landlord %>
+					<%= notice.apartment.apartment_name if notice.apartment %> </br>
 					From: <%= notice.tenant.full_name if notice.tenant %>
 					<%= notice.landlord.full_name if notice.landlord %>  </br>				
 					Type: <%= notice.notice_type %> </br>

@@ -1,7 +1,5 @@
-<h1>Showing this Building</h1>
+<h1><%= @building.building_name %></h1>
 <p>
-
-<%= @building.building_name %>
 
 <% if landlord_signed_in? %>
 	<div class="button">
@@ -38,8 +36,9 @@
 		<div class="apartment-notices">
 			<h2> Notice Board </h2>
 			<% Notice.all.each do |notice| %>
-				<% if notice.apartment %>
+				<% unless notice.apartment.nil? || notice.apartment.building_id.nil? %>
 					<% if notice.apartment.in_building? (@building) %>
+						<%= notice.apartment.apartment_name if notice.apartment %> </br>
 						From: <%= notice.tenant.full_name if notice.tenant %>
 						<%= notice.landlord.full_name if notice.landlord %>  </br>				
 						Type: <%= notice.notice_type %> </br>
