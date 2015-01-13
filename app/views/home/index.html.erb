@@ -9,7 +9,7 @@
 
 	<p class="apartment-name"> 
 		<%= current_tenant.apartment.apartment_name if current_tenant.apartment %> </br>
-		<%= link_to 'Building Information', buildings_about_path(current_tenant.apartment.building) %>
+		<%= link_to 'Building Information', buildings_about_path(current_tenant.apartment.building) if current_tenant.apartment %>
 		</p>
 	<p>
 
@@ -17,45 +17,47 @@
 		<div class="apartment-tenants">
 			<h2> Apartment Information </h2>
 
-			<%= current_tenant.apartment.apartment_name %> </br>
-			<%= current_tenant.apartment.number_of_tenants %> tenants: </br> </br>
+			<% if current_tenant.apartment %>
 
-			<div class="tenant-info">
-			<% Tenant.all.each do |tenant| %>
-				<% if tenant.apartment_id == current_tenant.apartment_id %>
-					Name: <%= tenant.full_name	%> </br>
-					Phone: <%= tenant.phone_number %> </br>
-					Email: <%= tenant.email %> </br> </br>
-				<% end %>
-			<% end %></div>	
-		</div>
+					<%= current_tenant.apartment.apartment_name %> </br>
+					<%= current_tenant.apartment.number_of_tenants %> tenants: </br> </br>
 
-		<div class="apartment-notices">
-			<h2> Notice Board </h2>
-			<% Notice.all.each do |notice| %>
-				<% if notice != Notice.last %>
-					<% if notice.apartment == current_tenant.apartment %>
-						From: <%= notice.tenant.full_name if notice.tenant %>
-						<%= notice.landlord.full_name if notice.landlord %>  </br>				
-						Type: <%= notice.notice_type %> </br>
-						Subject: <%= notice.title %> </br>
-						<%= simple_format(notice.body)%> </br>	
-						<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
-						<hr>
+					<div class="tenant-info">
+					<% Tenant.all.each do |tenant| %>
+						<% if tenant.apartment_id == current_tenant.apartment_id %>
+							Name: <%= tenant.full_name	%> </br>
+							Phone: <%= tenant.phone_number %> </br>
+							Email: <%= tenant.email %> </br> </br>
+						<% end %>
+					<% end %></div>	
+				</div>
+
+				<div class="apartment-notices">
+					<h2> Notice Board </h2>
+					<% Notice.all.each do |notice| %>
+						<% if notice != Notice.last %>
+							<% if notice.apartment == current_tenant.apartment %>
+								From: <%= notice.tenant.full_name if notice.tenant %>
+								<%= notice.landlord.full_name if notice.landlord %>  </br>				
+								Type: <%= notice.notice_type %> </br>
+								Subject: <%= notice.title %> </br>
+								<%= simple_format(notice.body)%> </br>	
+								<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+								<hr>
+							<% end %>
+						<% else %>
+							<% if notice.apartment == current_tenant.apartment %>
+								From: <%= notice.tenant.full_name if notice.tenant %>
+								<%= notice.landlord.full_name if notice.landlord %>  </br>				
+								Type: <%= notice.notice_type %> </br>
+								Subject: <%= notice.title %> </br>
+								<%= simple_format(notice.body) %> </br>	
+								<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+							<% end %>
+						<% end %>
 					<% end %>
-				<% else %>
-					<% if notice.apartment == current_tenant.apartment %>
-						From: <%= notice.tenant.full_name if notice.tenant %>
-						<%= notice.landlord.full_name if notice.landlord %>  </br>				
-						Type: <%= notice.notice_type %> </br>
-						Subject: <%= notice.title %> </br>
-						<%= simple_format(notice.body) %> </br>	
-						<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
-					<% end %>
-				<% end %>
+				</div>
 			<% end %>
-		</div>
-
 
 	</p>
 

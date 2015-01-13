@@ -1,4 +1,7 @@
 class TenantsController < ApplicationController
+  # POST /tenants
+  # POST /tenants.json
+
   before_action :authenticate_tenant!
 
   def index
@@ -12,6 +15,25 @@ class TenantsController < ApplicationController
   def edit
     @tenant = Tenant.find(params[:id])
   end
+
+  def create
+    @tenant = Tenant.new(tenant_params)
+
+    respond_to do |format|
+      if @tenant.save
+
+        # UserMailer.welcome_email(@tenant).deliver
+        # deliver_later
+      
+        format.html { redirect_to(@tenant, notice: 'User was successfully created.') }
+        format.json { render json: @tenant, status: :created, location: @tenant }
+      else
+        format.html { render :new }
+        format.json { render json: @tenant.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
 
   def update
     @tenant = Tenant.find(params[:id])

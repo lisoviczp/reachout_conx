@@ -14,11 +14,17 @@ class NoticesController < ApplicationController
 
   def create
     @notice = Notice.new(notice_params)
+    @tenant = current_tenant
+
     if current_tenant
       @notice.tenant = current_tenant
       @notice.apartment_id = current_tenant.apartment_id
     elsif current_landlord 
       @notice.landlord = current_landlord
+    end
+
+    if @notice.save
+      # UserMailer.notice_email(@tenant, @notice).deliver
     end
 
     if @notice.update(notice_params)
