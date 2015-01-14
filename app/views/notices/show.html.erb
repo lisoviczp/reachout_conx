@@ -1,10 +1,13 @@
-<h1>Notices#show</h1>
+<h1>Landline</h1>
 
-<p>
-<%= @notice.notice_type %> </br>
-<%= @notice.title %> </br>
-<%= @notice.body %> </br>
-TenantId: <%= @notice.tenant_id %> </br>
-ApartmentId: <%= @notice.apartment_id %>
-
-</p>
+<div class="one-container">
+	<p>
+	<%= @notice.apartment.apartment_name %> </br>
+	From: <%= @notice.tenant.full_name if @notice.tenant %> 
+	<%= @notice.landlord.full_name if @notice.landlord %> </br>
+	<%= @notice.notice_type %> </br>
+	<%= @notice.title %> </br>
+	<%= @notice.body %> </br>
+	<%= @notice.get_time %> </br>
+	</p>
+</div>

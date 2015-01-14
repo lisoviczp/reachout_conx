@@ -6,12 +6,14 @@ class NoticesController < ApplicationController
       Notice.all.each do |notice|
         if notice.landlord == current_landlord
           @current_notices << notice
+          @user = current_landlord
         end
       end
     elsif tenant_signed_in?
       Notice.all.each do |notice|
         if notice.apartment == current_tenant.apartment
           @current_notices << notice
+          @user = current_tenant
         end
       end
     end
@@ -24,7 +26,11 @@ class NoticesController < ApplicationController
 
   def new
     @notice = Notice.new
-    @landlord = current_landlord
+    if landlord_signed_in?
+      @landlord = current_landlord
+    elsif tenant_signed_in?
+      @tenant = current_tenant
+    end
   end
 
   def create

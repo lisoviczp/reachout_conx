@@ -1,4 +1,12 @@
-<h1> Welcome to Reach Out </h1>
+<h1> Landline </h1>
+<h2> 
+	<% if landlord_signed_in? %>
+		for Landlords
+	<% elsif tenant_signed_in? %>
+		for Tenants
+	<% end %>
+</h2>
+
 
 <p class="options"> 
 <% if tenant_signed_in? %> 
@@ -32,9 +40,9 @@
 				</div>
 
 				<div class="apartment-notices">
-					<h2> Notice Board </h2>
-					<% Notice.all.each do |notice| %>
-						<% if notice != Notice.last %>
+					<h2> <%= link_to 'Notice Board', notices_path %> </h2>
+					<% Notice.all.reverse.each do |notice| %>
+						<% if notice != Notice.first %>
 							<% if notice.apartment == current_tenant.apartment %>
 								<%= notice.apartment.apartment_name if notice.apartment %> </br>
 								From: <%= notice.tenant.full_name if notice.tenant %> 
@@ -60,16 +68,18 @@
 				</div>
 			<% end %>
 	</p>
-
+</div>
 <p>
 <% elsif landlord_signed_in? %> 
 	<%= link_to 'Invite a Tenant', new_tenant_path %> &nbsp | &nbsp
 	<%= link_to 'Register a building', new_building_path %> &nbsp | &nbsp
 	<img src="/assets/png/glyphicons-364-cloud-download.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Register an apartment', new_apartment_path %> &nbsp | &nbsp
 	<img src="/assets/png/glyphicons-151-edit.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Post a Notice', new_notice_path %> 
+</p>
 </br>
-	
+<div class="all-apartments-container">
 	<div class="apartment-tenants">
+		<h2> Building Information </h2>
 		<% Building.all.each do |building| %>
 			<% if building.landlord == current_landlord %>
 				<%= link_to building.building_name, building_path(building) %> <br>
@@ -77,11 +87,11 @@
 			<% end %>
 		<% end %>
 	</div>
-</p>
+
 	<div class="apartment-notices">
-		<h2> Notice Board </h2>
-		<% Notice.all.each do |notice| %>
-			<% if notice != Notice.last %>
+		<h2> <%= link_to 'Notice Board', notices_path %> </h2>
+		<% Notice.all.reverse.each do |notice| %>
+			<% if notice != Notice.first %>
 				<% if notice.landlord == current_landlord %>
 					<%= notice.apartment.apartment_name if notice.apartment %> </br>
 					From: <%= notice.tenant.full_name if notice.tenant %> 
@@ -106,6 +116,7 @@
 		<% end %>
 	</div>
 <% else %>
+</div>
 
 <h3 class="stats-container">
 	<div id="stats"><%= Tenant.count %></div> subscribed tenants in 

@@ -1,12 +1,10 @@
 <h1>Notices</h1>
 <h2> <%= link_to 'Print Notices (PDF)', notices_path(@notice, format: :pdf) %> </h3>
 
-<p>
-<div class="all-apartments-container">
 <% if landlord_signed_in? %>
-<div class="notice-print">
+	<div class="notices-print">
 	<% @current_notices.each do |notice| %>
-		<% if notice != Notice.last %>
+		<% if notice != Notice.first %>
 			<% if notice.landlord == current_landlord %>
 				<%= notice.apartment.apartment_name if notice.apartment %> </br>
 				From: <%= notice.tenant.full_name if notice.tenant %> 
@@ -14,7 +12,7 @@
 				Type: <%= notice.notice_type %> </br>
 				Subject: <%= notice.title %> </br>
 				<%= simple_format(notice.body)%> </br>	
-				<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+				<%= notice.get_time %>
 				<hr>
 			<% end %>
 		<% else %>
@@ -25,13 +23,15 @@
 				Type: <%= notice.notice_type %> </br>
 				Subject: <%= notice.title %> </br>
 				<%= simple_format(notice.body) %> </br>	
-				<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+				<%= notice.get_time %>
 			<% end %>
 		<% end %>
 	<% end %>
-<% elsif tenant_signed_in? %>
-	<% @notice.each do |notice| %>
-		<% if notice != Notice.last %>
+	</div>
+<% elsif tenant_signed_in? && current_tenant.apartment %>
+	<div class="notices-print">
+	<% @current_notices.each do |notice| %>
+		<% if notice != Notice.first %>
 			<% if notice.apartment == current_tenant.apartment %>
 				<%= notice.apartment.apartment_name if notice.apartment %> </br>
 				From: <%= notice.tenant.full_name if notice.tenant %> 
@@ -39,7 +39,7 @@
 				Type: <%= notice.notice_type %> </br>
 				Subject: <%= notice.title %> </br>
 				<%= simple_format(notice.body)%> </br>	
-				<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+				<%= notice.get_time %>
 				<hr>
 			<% end %>
 		<% else %>
@@ -50,13 +50,13 @@
 				Type: <%= notice.notice_type %> </br>
 				Subject: <%= notice.title %> </br>
 				<%= simple_format(notice.body) %> </br>	
-				<%= notice.created_at.strftime("%a. %B %e, %Y at %I:%M%P %Z")  %>
+				<%= notice.get_time %>
 			<% end %>
 		<% end %>
 	<% end %>
+	</div>
 <% end %>
-</div>
-</div>
 
-</p>
+
+
 
