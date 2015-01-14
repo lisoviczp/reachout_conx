@@ -60,7 +60,7 @@ private
 
   def tenant_params
     params.require(:tenant).permit(:first_name, :last_name, :email, :phone_number,
-      :landlord_id, :building_id, :apartment_id, notice_ids: [])
+      :landlord_id, :building_id, :apartment_id, notice_ids: [], :connection_id)
   end
 
   # post_ids: [], picture_ids: [])

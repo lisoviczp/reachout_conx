@@ -13,6 +13,8 @@ class Landlord < ActiveRecord::Base
   has_many :apartments
   has_many :tenants
   has_many :notices
+
+  has_many :connections
   
   def full_name 
     "#{first_name} #{last_name}"

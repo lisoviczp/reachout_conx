@@ -32,7 +32,7 @@ private
 
   def landlord_params
     params.require(:landlord).permit(:first_name, :last_name, :email, :phone_number,
-      building_ids: [], apartment_ids: [], tenant_ids: [], notice_ids: [])
+      building_ids: [], apartment_ids: [], tenant_ids: [], notice_ids: [], connection_ids: [])
   end
 
   # post_ids: [], picture_ids: [])

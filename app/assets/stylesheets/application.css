@@ -15,8 +15,8 @@
  */
 
 body {
- 	/*background-color: rgb(225, 225, 225);*/
- 	background-image: url("/assets/432park.jpg");
+ 	background-color: rgb(225, 225, 225);
+ 	/*background-image: url("/assets/432park.jpg");*/
  }
 
 h1 {

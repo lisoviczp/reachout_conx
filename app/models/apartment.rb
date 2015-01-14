@@ -4,6 +4,8 @@ class Apartment < ActiveRecord::Base
 	has_many :tenants
 	has_many :notices
 
+	has_one :connection
+
 	def apartment_name
 		building.building_name + ": Apartment " + apartment_number
 	end

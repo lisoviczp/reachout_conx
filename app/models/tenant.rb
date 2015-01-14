@@ -8,7 +8,10 @@ class Tenant < ActiveRecord::Base
   belongs_to :landlord
   belongs_to :building
   belongs_to :apartment
+
   has_many :notices
+
+  belongs_to :connection
   
   def full_name 
     "#{first_name} #{last_name}"
