@@ -14,6 +14,16 @@ class ConnectionsController < ApplicationController
     @connection = Connection.find(params[:id])
   end
 
+  def create
+    @connection = Connection.new(connection_params)
+ 
+    if @connection.update(connection_params)
+      redirect_to @connection
+    else
+      render :new
+    end
+  end
+
   def update
     @connection = Connection.find(params[:id])
 

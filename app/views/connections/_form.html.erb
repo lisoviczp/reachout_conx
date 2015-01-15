@@ -1,0 +1,28 @@
+<h1> Connection </h1>
+
+
+<div class="notice-form">
+  <%= simple_form_for @connection do |f| %>
+
+    <div class=""> 
+	    <%= f.label  :start_date, label: "START DATE SELECT: " %>
+	    <%= f.date_select :start_date %>
+    </div>  </br>
+
+    <div class=""> 
+	    <%= f.label  :end_date, label: "END DATE SELECT: " %>
+	    <%= f.date_select :end_date %>
+    </div>  </br>
+
+    <div class=""> 
+      <%= f.association :apartment, label_method: :apartment_name,
+      as: :collection_select%>
+    </div>  </br>
+
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+
+
+<!-- http://railscasts.com/episodes/213-calendars -->

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :landlords
   resources :tenants
 
+  resources :connections
+
   get 'tenants/:id/find' => 'tenants#find', as: 'tenants_find'
   get 'buildings/:id/about' => 'buildings#about', as: 'buildings_about'
   
