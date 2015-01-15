@@ -3,11 +3,36 @@ class ConnectionsController < ApplicationController
   
 
   def index
-    @connection = Connection.all
+    # @connection = Connection.all
+    @current_connections = []
+    if landlord_signed_in?
+      Connection.all.each do |connection|
+        if connection.landlord == current_landlord
+          @current_connections << connection
+          # @user = current_landlord
+          # @tenants = Tenant.where(apartment_id: connection.apartment_id)
+        end
+      end
+    elsif tenant_signed_in?
+      Connection.all.each do |connection|
+        if connection.apartment == current_tenant.apartment
+          @current_connections << connection
+          # @user = current_tenant
+          # @tenants = Tenant.where(apartment_id: connection.apartment_id)
+        end
+      end
+    end
   end
 
   def show
     @connection = Connection.find(params[:id])
+    @tenants = []
+    Tenant.all.each do |tenant|
+      if tenant.apartment == @connection.apartment
+        @tenants << tenant
+      end
+    end
+
   end
 
   def edit
@@ -17,6 +42,12 @@ class ConnectionsController < ApplicationController
   def create
     @connection = Connection.new(connection_params)
  
+    if landlord_signed_in?
+      @connection.landlord = current_landlord
+    else
+      # @landlord = current_tenant.landlord
+    end
+
     if @connection.update(connection_params)
       redirect_to @connection
     else
@@ -36,6 +67,7 @@ class ConnectionsController < ApplicationController
 
   def new
     @connection = Connection.new
+
   end
 
 private

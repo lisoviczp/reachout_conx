@@ -36,6 +36,8 @@ class NoticesController < ApplicationController
   def create
     @notice = Notice.new(notice_params)
 
+    # should this be tenant_signed_in?
+
     if current_tenant
       @tenant = current_tenant
       @notice.tenant = current_tenant

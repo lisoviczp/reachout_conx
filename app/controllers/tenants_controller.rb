@@ -60,15 +60,10 @@ private
 
   def tenant_params
     params.require(:tenant).permit(:first_name, :last_name, :email, :phone_number,
-      :landlord_id, :building_id, :apartment_id, notice_ids: [], :connection_id)
+      :landlord_id, :building_id, :apartment_id, notice_ids: [])
   end
 
-  # post_ids: [], picture_ids: [])
-
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :phone_number,
-  #    :email, :password, :password_confirmation) }
-  # end ?????????????????
+  # , :connection_id
 
 
 end
