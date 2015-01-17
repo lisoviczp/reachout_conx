@@ -5,7 +5,7 @@
 	<%= @connection.start_date.strftime("%B %e, %Y ") %> </br>
 	<%= @connection.end_date.strftime("%B %e, %Y ") %> </br>
 	<%= @connection.apartment.apartment_name %> </br>
-	<%= @connection.landlord.full_name %> </br>
+	<%= @connection.apartment.landlord.full_name %> </br>
 
 	<% @tenants.each do |tenant| %>
 		<%= tenant.full_name %> </br>

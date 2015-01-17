@@ -43,3 +43,7 @@ gem 'simple_form'
 gem 'pry-rails'
 gem 'prawnto_2', :require => "prawnto"
 gem 'simple-form-datepicker', '~> 0.1.3'
+gem 'jquery-ui-rails'
+
+# gem better errors
+# binding of caller

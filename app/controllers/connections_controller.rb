@@ -1,6 +1,5 @@
 class ConnectionsController < ApplicationController
-  before_action :authenticate_landlord!
-  
+
 
   def index
     # @connection = Connection.all
@@ -73,8 +72,8 @@ class ConnectionsController < ApplicationController
 private
 
   def connection_params
-    params.require(:connection).permit(:start_date, :end_date, :apartment_id, :landlord_id,
-      tenant_ids: [])
+    params.require(:connection).permit(:start_date, :end_date, :apartment_id, :landlord_id, 
+      :apartment_city, :landlord_name, :city, tenant_ids: [])
   end
 
   # post_ids: [], picture_ids: [])

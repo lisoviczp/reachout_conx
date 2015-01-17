@@ -11,13 +11,18 @@
         <h2> Select a Building </h2>
         <p>         
 
-			<div class="new-form"> 
-				<%= f.association :building, label_method: :building_name, prompt: "Select Building" %>
-			</div> <br> <br>
-			
-			<div class="new-form"> 
-				<%= f.association :apartment, label_method: :apartment_name, prompt: "Select Apartment" %>
-			</div> <br> <br>
+  			<div class="new-form"> 
+  				<%= f.association :building, label_method: :building_name, prompt: "Select Building" %>
+  			</div> <br> <br>
+  			
+  			<div class="new-form"> 
+  				<%= f.association :apartment, label_method: :apartment_name, prompt: "Select Apartment" %>
+  			</div> <br> <br>
+
+        <div class="new-form"> 
+          <%= f.label :landlord_name %>
+          <%= f.text_field :landlord_name, data: {autocomplete_source: Landlord.order(:last_name).map(&:full_name)}%>
+        </div> <br> <br>
 
           <%= f.submit class: 'btn btn-primary' %>
         </p>

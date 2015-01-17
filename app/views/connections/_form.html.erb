@@ -4,6 +4,22 @@
 <div class="notice-form">
   <%= simple_form_for @connection do |f| %>
 
+    <div class="new-form"> 
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div> <br> <br>
+
+    <div class="new-form"> 
+      <%= f.label :landlord_name %>
+      <%= f.text_field :landlord_name, data: {autocomplete_source: Landlord.order(:last_name).map(&:full_name)}%>
+    </div> <br> <br>
+
+    <div class=""> 
+      <%= f.association :landlord, label_method: :full_name,
+      as: :collection_select%>
+    </div>  </br>
+
+
     <div class=""> 
 	    <%= f.label  :start_date, label: "START DATE SELECT: " %>
 	    <%= f.date_select :start_date %>
@@ -26,3 +42,4 @@
 
 
 <!-- http://railscasts.com/episodes/213-calendars -->
+<!-- f.text_field :apartment_city, data: {autocomplete_source: Apartment.order(:city).map(&:city)} -->

@@ -166,4 +166,5 @@ SimpleForm.setup do |config|
 
   #not sure why I was trying to add this..
   # config.label_text = lambda { |label, required| "#{label}" }
+  
 end

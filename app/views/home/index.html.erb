@@ -1,18 +1,19 @@
-<h1> Landline </h1>
-<h2> 
+<h1> Landline 
+<sup> 
 	<% if landlord_signed_in? %>
 		for Landlords
 	<% elsif tenant_signed_in? %>
 		for Tenants
 	<% end %>
-</h2>
-
+</sup>
+</h1>
 
 <p class="options"> 
 <% if tenant_signed_in? %> 
 	<img src="/assets/png/glyphicons-125-message-plus.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Subscribe to existing apartment', tenants_find_path(current_tenant) %> &nbsp | &nbsp
 	<img src="/assets/png/glyphicons-364-cloud-download.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Register an apartment', new_apartment_path %> &nbsp | &nbsp
-	<img src="/assets/png/glyphicons-151-edit.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Post a Notice', new_notice_path %> 
+	<img src="/assets/png/glyphicons-151-edit.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Post a Notice', new_notice_path %> &nbsp | &nbsp
+	<img src="/assets/png/glyphicons-125-message-plus.png" class="glyphicons glyphicons-message-plus"></span> <%= link_to 'Connect to an Apartment', new_connection_path %> 
 
 	<p class="apartment-name"> 
 		<%= current_tenant.apartment.apartment_name if current_tenant.apartment %> </br>
