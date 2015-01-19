@@ -43,6 +43,7 @@ class BuildingsController < ApplicationController
   end
 
   def about
+    # binding.pry
     @building = Building.find(params[:id])
   end
 
@@ -51,7 +52,7 @@ private
 
   def building_params
     params.require(:building).permit(:address, :city, :state, :zipcode, :number_of_apartments, 
-    	:building_code, :landlord_id, apartment_ids: [], tenant_ids: [])
+    	:building_code, :landlord_id, :detail_id, apartment_ids: [], tenant_ids: [])
   end
 
   # post_ids: [], picture_ids: [])

@@ -4,13 +4,11 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-
+<h2> Select a Building </h2>
 <div class = "my-form-container">
   <% if tenant_signed_in? %> 
       <%= simple_form_for @tenant do |f| %>
-        <h2> Select a Building </h2>
         <p>         
-
   			<div class="new-form"> 
   				<%= f.association :building, label_method: :building_name, prompt: "Select Building" %>
   			</div> <br> <br>

@@ -40,18 +40,25 @@ class ConnectionsController < ApplicationController
 
   def create
     @connection = Connection.new(connection_params)
- 
-    if landlord_signed_in?
-      @connection.landlord = current_landlord
-    else
-      # @landlord = current_tenant.landlord
-    end
+    # if @connection.available?
+      if landlord_signed_in?
+        @connection.landlord = current_landlord
+      else
+        # @connection.landlord = current_tenant.landlord
+        current_tenant.apartment = @connection.apartment
+        current_tenant.connection = @connection
+        current_tenant.save
+      end
 
-    if @connection.update(connection_params)
-      redirect_to @connection
-    else
-      render :new
-    end
+      if @connection.update(connection_params)
+        redirect_to @connection
+      else
+        render :new
+      end
+    # else
+    #   @connection.destroy
+    #   redirect_to new_connection_path
+    # end
   end
 
   def update
@@ -66,14 +73,28 @@ class ConnectionsController < ApplicationController
 
   def new
     @connection = Connection.new
-
   end
+
+  def approve
+    if landlord_signed_in?
+      @connection = Connection.where(landlord: current_landlord)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def approve_connections
+    #TODO mark all conections as approved
+    Connection.update_all([approved=true], :id => params[:connection_ids])
+    redirect_to root_path
+  end
+
 
 private
 
   def connection_params
     params.require(:connection).permit(:start_date, :end_date, :apartment_id, :landlord_id, 
-      :apartment_city, :landlord_name, :city, tenant_ids: [])
+      :apartment_city, :landlord_name, :city, :approved, tenant_ids: [])
   end
 
   # post_ids: [], picture_ids: [])

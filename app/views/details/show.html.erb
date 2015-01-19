@@ -1,2 +1,9 @@
-<h1>Details#show</h1>
-<p>Find me in app/views/details/show.html.erb</p>
+<h2> <%= @detail.building.building_name if @detail.building %> </h2>
+
+<div class="one-container">
+<%= simple_format(@detail.body) if @detail.body %> <br>
+<div style="text-align: center"><%= link_to 'Edit ', new_details_path(@detail.building) %> &nbsp | &nbsp 
+	<%= link_to 'Home', root_path %>  &nbsp | &nbsp 
+<%= link_to 'Building', building_path(@detail.building) %>  </div>
+
+</div>

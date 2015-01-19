@@ -1,16 +1,13 @@
-<h1><%= @building.building_name %></h1>
+<h2><%= @building.building_name %> <sup> <%= link_to 'Edit', edit_building_path(@building) %></sup> </h2>
 <p>
 
 <% if landlord_signed_in? %>
-	<div class="button">
-	<%= link_to 'Edit Building', edit_building_path(@building) %>
-	</div>
-	<%= @building.number_of_apartments %> apartments(s)
-	</p>
+
 	<p class="apartment-name"> 
 		<%= link_to 'Building Information', buildings_about_path %>
 		</p>
 	<p>
+
 
 	<div class="all-apartments-container">
 		<div class="apartment-tenants">

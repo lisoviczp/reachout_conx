@@ -7,7 +7,8 @@
 	<%= @notice.landlord.full_name if @notice.landlord %> </br>
 	<%= @notice.notice_type %> </br>
 	<%= @notice.title %> </br>
-	<%= @notice.body %> </br>
-	<%= @notice.get_time %> </br>
+	<%= simple_format(@notice.body)%> </br>
+	<%= @notice.get_time %> </br> <hr></br>
+	<div style="text-align: center"><%= link_to 'Home', root_path %></div>
 	</p>
 </div>

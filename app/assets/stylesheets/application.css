@@ -17,6 +17,8 @@
 body {
  	background-color: rgb(225, 225, 225);
  	/*background-image: url("/assets/432park.jpg");*/
+ 	margin-bottom: 10%;
+ 	padding-bottom: 10%;
  }
 
 h1 {
@@ -131,6 +133,8 @@ p {
 	background-color: white;*/
 	margin-right: 3%;
 	margin-left: 3%;
+	margin-bottom: 10%;
+	padding-bottom: 10%;
 }
 
 .notices-print {
@@ -191,7 +195,7 @@ p {
 	/*top: 600px;*/
 	margin-top: 5%;
 	float: right;
-	padding-right: 580px;
+	padding-right: 500px;
 }
 
 .notice-label {
@@ -234,9 +238,44 @@ p {
 	/*text-align: center;*/
 	margin-left: 30%;
 	margin-right: 30%;
-	padding: 5px;
+	padding: 3%;
+	font-family: helvetica;
+	font-weight: 100;
+
+	/*font-size: 16px;*/
 }
 
 sup {
 	font-size: 18px;
+}
+
+.my-form-container {
+	margin-left: 20%;
+	margin-right: 20%;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 1px gray;
+	padding: 2em;
+	background-color: white;
+	max-width: 100%;
+}
+
+.new-form {
+	font: helvetica;
+	font-weight: 100;
+	max-width: 100%;
+}
+
+.new-notice-container {
+	overflow: hidden;
+	width: 100%;
+	max-width: 100%;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 1px gray;
+	padding-bottom: 3%;
+	margin-bottom: 5%;
+}
+
+.notest {
+	font-family: helvetica;
+	font-weight: 100;
 }

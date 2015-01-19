@@ -1,33 +1,39 @@
 <h1> New Notice </h1>
 
-<div class="notice-label">
-  Apartment: </br></br>
-  Notice Type: </br> </br>
-  Subject: </br> </br>
-  Message: </br>
-</div>
+<div class="new-notice-container">
+  <div class="notice-label">
+    <% if @landlord %>
+      Apartment: </br></br>
+    <% end %>
+    Notice Type: </br> </br>
+    Subject: </br> </br>
+    Message: </br>
+  </div>
 
 
-<div class="notice-form">
-  <%= simple_form_for @notice do |f| %>
+  <div class="notice-form">
+    <%= simple_form_for @notice do |f| %>
 
-    <div class=""> 
-      <%= f.association :apartment, label_method: :apartment_name, label: false,
-      as: :collection_select, collection: Apartment.where(landlord: @landlord) %>
-    </div>  </br>
+      <% if @landlord %>
+        <div class="notest"> 
+          <%= f.association :apartment, label_method: :apartment_name, label: false,
+          as: :collection_select, collection: Apartment.where(landlord: @landlord) %>
+        </div>  </br>
+      <% end %>
 
-    <div class=""> 
-      <%= f.input :notice_type, collection: ['Rent','Utilities','Plumbing', 'Event', 'Cable/Internet','Damage'], label: false %>
-    </div>
-  </br>
-    <div class=""> 
-      <%= f.input :title,  input_html: {rows: 15, cols: 100}, label: false %>
-    </div> </br>
+      <div class="notest"> 
+        <%= f.input :notice_type, collection: ['Rent','Utilities','Plumbing', 'Event', 'Cable/Internet','Damage'], label: false  %>
+      </div>
+    </br>
+      <div class="notest"> 
+        <%= f.input :title,  input_html: {rows: 15, cols: 100}, label: false %>
+      </div> </br>
 
-    <div class=""> 
-      <%= f.input :body, input_html: {rows: 15, cols: 100 }, label: false %>
-    </div>  </br>
+      <div class="notest"> 
+        <%= f.input :body, input_html: {rows: 15, cols: 100 }, label: false %>
+      </div>  </br>
 
-    <%= f.submit class: 'btn btn-primary' %>
-  <% end %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>

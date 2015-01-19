@@ -5,7 +5,8 @@
 <div class = "my-form-container">
   <%= simple_form_for @apartment do |f| %>
     <div class="new-form"> 
-      <%= f.association :building, label_method: :building_name, prompt: "Select Building" %>
+      <%= f.association :building, label_method: :building_name, prompt: "Select Building", :wrapper_html => { :style => 'display: inline' } %>
+      <sup> <span style="font-size: 12px; display: inline-block;"><%= link_to 'Building Not Listed?', new_building_path %> </span></sup>
     </div> <br> <br>
 
     <div class="new-form"> 

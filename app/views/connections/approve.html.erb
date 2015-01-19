@@ -1,0 +1,33 @@
+
+<h1> testing approved form </h1>
+
+
+<% form_tag connections_path, :method => :put do %>
+  <ul>
+  <% @connection.all.each do |connection1| %>
+    <li>
+      <%= connection1.get_start if connection1.start_date %>
+      <%= check_box_tag "connection_ids[]", connection1.id %>
+      <%= connection1.apartment.apartment_name if connection1.apartment %>
+    </li>
+  <% end %>
+  </ul>
+  <%= submit_tag "Approve" %>
+<% end %>
+
+<h1> approve connections </h1>
+
+
+
+<div class="one-container">
+<% @connection.each do |connection| %>
+	<%= connection.get_start if connection.start_date %> </br>
+	<%= connection.get_end if connection.end_date %> </br>
+	<%= connection.apartment.apartment_name if connection.apartment %> </br> 
+	<% Tenant.where(connection: connection).each do |tenant| %>
+		<%= tenant.full_name %>
+		<%= tenant.email %>
+		<%= tenant.phone_number %> </br>
+	<% end %> </br> 
+	<%= check_box_tag 'approved', connection.id %> <br> <hr> </br> </br>
+<% end %> 

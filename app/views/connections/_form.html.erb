@@ -1,41 +1,42 @@
 <h1> Connection </h1>
 
 
-<div class="notice-form">
+<div class="my-form-container">
   <%= simple_form_for @connection do |f| %>
 
-    <div class="new-form"> 
+    <div class="notest"> 
       <%= f.label :city %>
       <%= f.text_field :city %>
-    </div> <br> <br>
+    </div> </br>
 
-    <div class="new-form"> 
-      <%= f.label :landlord_name %>
-      <%= f.text_field :landlord_name, data: {autocomplete_source: Landlord.order(:last_name).map(&:full_name)}%>
-    </div> <br> <br>
+    <% if tenant_signed_in? %>
+      <div class="notest"> 
+        <% f.label "Landlord's Full Name" %>
+        <% f.text_field :landlord_name, data: {autocomplete_source: Landlord.order(:last_name).map(&:full_name)}%>
+      </div></br>
 
-    <div class=""> 
-      <%= f.association :landlord, label_method: :full_name,
-      as: :collection_select%>
-    </div>  </br>
+      <div class="notest"> 
+        <%= f.association :landlord, label_method: :full_name,
+        as: :collection_select%>
+      </div>
+    <% end %>
 
 
-    <div class=""> 
-	    <%= f.label  :start_date, label: "START DATE SELECT: " %>
-	    <%= f.date_select :start_date %>
-    </div>  </br>
+    <div class="notest"> 
+	    <%= f.label  :start_date, label: "Start: " %>
+	    <%= f.date_select :start_date %> &nbsp &nbsp
 
-    <div class=""> 
-	    <%= f.label  :end_date, label: "END DATE SELECT: " %>
+	    <%= f.label  :end_date, label: "End:" %>
 	    <%= f.date_select :end_date %>
     </div>  </br>
 
-    <div class=""> 
+    <div class="notest"> 
       <%= f.association :apartment, label_method: :apartment_name,
-      as: :collection_select%>
+      as: :collection_select, label: 'Select Apartment',:wrapper_html => { :style => 'display: inline' }%> 
+      <sup> <span style="font-size: 12px; display: inline-block;"><%= link_to 'Apartment Not Listed?', new_apartment_path %> </span></sup>
     </div>  </br>
 
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary'%>
   <% end %>
 </div>
 

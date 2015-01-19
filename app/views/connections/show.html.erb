@@ -2,15 +2,15 @@
 
 <div class="one-container">
 	<p>
-	<%= @connection.start_date.strftime("%B %e, %Y ") %> </br>
-	<%= @connection.end_date.strftime("%B %e, %Y ") %> </br>
-	<%= @connection.apartment.apartment_name %> </br>
-	<%= @connection.apartment.landlord.full_name %> </br>
-
+	Start: <%= @connection.get_start %> </br>
+	End: <%= @connection.get_end %> </br>
+	Apartment: <%= @connection.apartment.apartment_name %> </br>
+	Landlord: <%= @connection.landlord.full_name %> </br>
+	Tenants: </br> </br>
 	<% @tenants.each do |tenant| %>
 		<%= tenant.full_name %> </br>
 		<%= tenant.email %> </br>
-		<%= tenant.phone_number %> </br>
+		<%= tenant.phone_number %> </br> </br>
 	<% end %>
 	</p>
 </div>

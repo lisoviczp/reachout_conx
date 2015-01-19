@@ -17,12 +17,12 @@
 		<%= link_to 'Home', root_path %> &nbsp | &nbsp
 		<%= link_to 'Edit Account', edit_tenant_path(current_tenant) %>  &nbsp | &nbsp
 		<%= link_to 'Sign Out', destroy_tenant_session_path, method: :delete,  :confirm => 'Are you sure?'  %> &nbsp | &nbsp
-		<%= current_tenant.email %> 
+		<%= current_tenant.email %> <sup> for tenants </sup>
 	<% elsif landlord_signed_in? %>
 		<%= link_to 'Home', root_path %> &nbsp | &nbsp
 		<%= link_to 'Edit Account', edit_landlord_path(current_landlord) %>  &nbsp | &nbsp
 		<%= link_to 'Sign Out', destroy_landlord_session_path, method: :delete,  :confirm => 'Are you sure?'  %> &nbsp | &nbsp
-	    <%= current_landlord.email %> 
+	    <%= current_landlord.email %> <sup> for landlords </sup>
 	<% else %>
 		<%= link_to 'Home', root_path %> &nbsp | &nbsp
 	    <%= link_to 'Sign In as Landlord', new_landlord_session_path %>	&nbsp | &nbsp

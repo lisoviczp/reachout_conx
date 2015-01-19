@@ -1,13 +1,20 @@
 <h1> Building Details </h1>
 
 <div class="notice-label">
+  Building: </br> </br>
   Details: </br> </br>
 </div>
 
 <div class="notice-form">
   <%= simple_form_for @detail do |f| %>
+
+	<div class="new-form"> 
+      <%=  f.association :building, label_method: :building_name,
+      as: :collection_select, label: false %>
+    </div> </br>
+
     <div class=""> 
-      <%= f.input :body, input_html: {rows: 50, cols: 100 }, label: false %>
+      <%= f.input :body, input_html: {rows: 15, cols: 100 }, label: false %>
     </div>  </br>
 
     <%= f.submit class: 'btn btn-primary' %>

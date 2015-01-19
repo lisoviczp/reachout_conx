@@ -2,7 +2,7 @@
 
 <h2> <%= @building.building_name %> </h2>
 <p class="apartment-name">
-<%= link_to 'Edit Building Information', buildings_about_path %>
+<%= link_to 'Edit Building Information', new_details_path(@building) %>
 </p>
 
 <div class="apartment-about">
@@ -14,14 +14,10 @@ This is where I will post all relevant information that you'll need to know abou
 </p>
 
 <p>
-this is where we need to show details/params
-</p>
-
-<p>
 <% Detail.all.each do |detail| %>
 	<% if detail.building_id == @building.id %>
 		<%= detail.body %>
-	<% end %>
+	<% end %> </br> <hr> </br> </br>
 <% end %>
 </p>
 

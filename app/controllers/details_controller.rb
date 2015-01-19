@@ -10,18 +10,15 @@ class DetailsController < ApplicationController
   def new
     if landlord_signed_in?
       @detail = Detail.new
+      @building = Building.find(params[:id])
     else
       redirect_to root_path
     end
   end
 
   def create
-
     @detail = Detail.new(detail_params)
-
-    if @current_landlord
-      @detail.building = Building.where(landlord_id: current_landlord.id)
-    end 
+    @detail.building= @building
 
     if @detail.update(detail_params)
       redirect_to @detail
@@ -57,7 +54,7 @@ class DetailsController < ApplicationController
 private
 
   def detail_params
-    params.require(:detail).permit(:building_id)
+    params.require(:detail).permit(:body, :building_id)
   end
 
 end

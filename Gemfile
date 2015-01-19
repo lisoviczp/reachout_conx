@@ -44,6 +44,8 @@ gem 'pry-rails'
 gem 'prawnto_2', :require => "prawnto"
 gem 'simple-form-datepicker', '~> 0.1.3'
 gem 'jquery-ui-rails'
+# gem 'searchify'
+gem 'better_errors'
 
 # gem better errors
 # binding of caller

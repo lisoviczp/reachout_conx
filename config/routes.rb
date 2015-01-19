@@ -12,10 +12,17 @@ Rails.application.routes.draw do
   resources :landlords
   resources :tenants
 
+  # get 'connections/approve' => 'connections#approve', as: 'approve_connections'
+
+  resources :connections, :collection => { :approve_connections => :put }, as: 'approve_connections'
   resources :connections
+
+  # mount Searchify::Engine => "/searchify", :as => "searchify"
 
   get 'tenants/:id/find' => 'tenants#find', as: 'tenants_find'
   get 'buildings/:id/about' => 'buildings#about', as: 'buildings_about'
+
+  get 'details/:id/new' => 'details#new', as: 'new_details'
   
   # get 'home/index'
 
