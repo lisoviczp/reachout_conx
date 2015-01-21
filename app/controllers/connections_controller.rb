@@ -6,7 +6,7 @@ class ConnectionsController < ApplicationController
     @current_connections = []
     if landlord_signed_in?
       Connection.all.each do |connection|
-        if connection.landlord == current_landlord
+        if connection.landlord == current_landlord && connection.approved
           @current_connections << connection
           # @user = current_landlord
           # @tenants = Tenant.where(apartment_id: connection.apartment_id)
@@ -14,12 +14,14 @@ class ConnectionsController < ApplicationController
       end
     elsif tenant_signed_in?
       Connection.all.each do |connection|
-        if connection.apartment == current_tenant.apartment
+        if connection.apartment == current_tenant.apartment && connection.approved
           @current_connections << connection
           # @user = current_tenant
           # @tenants = Tenant.where(apartment_id: connection.apartment_id)
         end
       end
+    else
+      redirect_to root_path
     end
   end
 
@@ -85,6 +87,7 @@ class ConnectionsController < ApplicationController
 
   def approve_connections
     #TODO mark all conections as approved
+    binding.pry
     Connection.update_all([approved=true], :id => params[:connection_ids])
     redirect_to root_path
   end

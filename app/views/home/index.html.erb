@@ -77,7 +77,7 @@ $('.searchify').searchify();
 </br>
 <div class="all-apartments-container">
 	<div class="apartment-tenants">
-		<h2> Building Information </h2>
+		<h2> Buildings </h2>
 		<% Building.all.each do |building| %>
 			<% if building.landlord == current_landlord %>
 				<%= link_to building.building_name, building_path(building) %> <br>

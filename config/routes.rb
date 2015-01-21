@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#index"
+  # get 'approve/:post_id' => 'votes#upvote', as: :upvote
+  # get 'connections/approve' => 'connections#approve_connections', as: :approve_connections
 
   resources :buildings
   resources :apartments
@@ -12,9 +14,9 @@ Rails.application.routes.draw do
   resources :landlords
   resources :tenants
 
-  # get 'connections/approve' => 'connections#approve', as: 'approve_connections'
+  # get 'connections/approve' => 'connections#approve', as: :approve_connections
 
-  resources :connections, :collection => { :approve_connections => :put }, as: 'approve_connections'
+  resources :connections, :collection => { :approve_connections => :put }, as: :approve_connections
   resources :connections
 
   # mount Searchify::Engine => "/searchify", :as => "searchify"
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
   get 'tenants/:id/find' => 'tenants#find', as: 'tenants_find'
   get 'buildings/:id/about' => 'buildings#about', as: 'buildings_about'
 
-  get 'details/:id/new' => 'details#new', as: 'new_details'
+  get 'buildings/:id/information' => 'buildings#information', as: 'buildings_information'
   
   # get 'home/index'
 

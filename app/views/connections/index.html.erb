@@ -1,16 +1,37 @@
-<h1> testing approved form </h1>
+<h2> to go in approve connections </h2>
+
+<div class="connections-container">
+	<%= form_tag approve_connections_path, :html => { :method => :put } do %>
+	  <ul>
+	  <% @current_connections.each do |connection| %>
+	    <li>
+			<%= connection.get_start if connection.start_date %> <br>
+			<%= connection.get_end if connection.end_date %> <br>
+			<%= connection.apartment.apartment_name if connection.apartment %> <br>
+			<%= check_box_tag "connection_ids[]", connection.id %> <br><hr><br><br>
+	    </li>
+	  <% end %>
+	  </ul>
+	  <%= submit_tag "Approve" %>
+	<% end %>
+</div>
 
 
-<%= form_tag approve_connections_path, :method => :put do %>
-  <ul>
-  <% @current_connections.each do |connection| %>
-    <li>
-		<%= connection.get_start if connection.start_date %> <br>
-		<%= connection.get_end if connection.end_date %> <br>
-		<%= connection.apartment.apartment_name if connection.apartment %> <br>
-		<%= check_box_tag "connection_ids[]", connection.id %> <br><hr><br><br>
-    </li>
-  <% end %>
-  </ul>
-  <%= submit_tag "Approve" %>
-<% end %>
+<h2> to go in index	 connections </h2>
+
+<div class="one-container">
+	<% @current_connections.each do |connection| %>
+		<p>
+		Start: <%= connection.get_start %> </br>
+		End: <%= connection.get_end %> </br>
+		Apartment: <%= connection.apartment.apartment_name %> </br>
+		Landlord: <%= connection.landlord.full_name %> </br>
+		Tenants: </br> </br>
+		<% @tenants.each do |tenant| %>
+			<%= tenant.full_name %> </br>
+			<%= tenant.email %> </br>
+			<%= tenant.phone_number %> </br> </br>
+		<% end %>
+		</p>
+	<% end %>
+</div>

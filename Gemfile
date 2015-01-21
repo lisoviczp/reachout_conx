@@ -46,6 +46,5 @@ gem 'simple-form-datepicker', '~> 0.1.3'
 gem 'jquery-ui-rails'
 # gem 'searchify'
 gem 'better_errors'
+gem 'binding_of_caller'
 
-# gem better errors
-# binding of caller

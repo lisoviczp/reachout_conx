@@ -1,0 +1,12 @@
+<h1> Building Information </h1>
+<h2> <%= @building.building_name %> </h2>
+
+<div class="one-form">
+  <%= simple_form_for @building do |f| %>
+    <div class=""> 
+      <%= f.input :information, input_html: {rows: 15, cols: 125 }, label: false %>
+    </div>  </br>
+
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>

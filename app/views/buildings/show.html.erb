@@ -40,7 +40,8 @@
 						<%= notice.landlord.full_name if notice.landlord %>  </br>				
 						Type: <%= notice.notice_type %> </br>
 						Subject: <%= notice.title %> </br>
-						<%= notice.body %> </br>	
+						<%= simple_format(notice.body) %> </br>	
+						<%= notice.get_time %> </br>
 						<hr>
 					<% end %>
 				<% end %>
